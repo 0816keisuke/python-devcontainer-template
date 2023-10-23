@@ -1,0 +1,100 @@
+{
+    // ディスプレイに表示される名前
+	"name": "Python-DevContainer-Template",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
+    "features": {
+		"ghcr.io/devcontainers-contrib/features/pdm:2": {
+			"version": "latest"
+		}
+	},
+    // コンテナ立ち上げ時のオプションの指定
+    "runArgs": [
+        // --name ビルドするDocker containerの名称の指定
+        "--name=Python-DevContainer-Template"
+    ],
+    // コンテナ内の実行ユーザーの設定 (推奨設定)
+	"remoteUser": "vscode",
+    "customizations": {
+        "vscode": {
+            // 拡張機能のインストール
+            "extensions": [
+                // Python関連
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-python.vscode-pylance",
+                "ms-python.black-formatter",
+                "njpwerner.autodocstring",
+                // Git関連
+                "eamodio.gitlens",
+                "mhutchie.git-graph",
+                "adam-bender.commit-message-editor",
+                "vivaxy.vscode-conventional-commits",
+                // その他
+                "timonwong.shellcheck",
+                "PKief.material-icon-theme",
+                "mechatroner.rainbow-csv",
+                "GrapeCity.gc-excelviewer", //CSVをエクセルっぽく見る
+                "shardulm94.trailing-spaces",
+                "IBM.output-colorizer",
+                "oderwat.indent-rainbow",
+                "yzhang.markdown-all-in-one", // Markdown
+                "shd101wyy.markdown-preview-enhanced", // Markdown
+                "GitHub.copilot",
+                "ionutvmi.path-autocomplete"
+            ],
+            // VS Code の設定
+            "settings": {
+                // 自動保存設定をする
+                "files.autoSave": "afterDelay",
+                // ファイル保存時、コードを整形する
+                "editor.formatOnSave": true,
+                // ファイル保存時、同時に行われるアクション
+                "editor.codeActionsOnSave": {
+                    // 拡張機能Prettierのチェックを走らせる
+                    "source.fixAll.prettier": true
+                },
+                "editor.renderControlCharacters": true, // 制御文字を表示する
+                // ファイル保存時、最終行に改行を挿入する
+                "files.insertFinalNewline": true,
+                // ファイル保存時、最終行以降の空行を削除する
+                "files.trimFinalNewlines": true,
+                // ファイル保存時、末尾の空白をトリミングする
+                "files.trimTrailingWhitespace": true,
+                // インデントガイドを表示する
+                "editor.guides.indentation": true,
+                // 括弧（ブラケット）のペアガイドを表示する
+                "editor.guides.bracketPairs": true,
+                // 括弧（ブラケット）の水平方向のペアガイドを表示する
+                "editor.guides.bracketPairsHorizontal": true,
+                // 括弧（ブラケット）のペアごとに色を分ける
+                "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+                // 選択範囲のハイライトに角丸を適用する
+                "editor.roundedSelection": false,
+                // アイコンテーマ
+                "workbench.iconTheme": "material-icon-theme",
+                // ツリーのインデント
+                "workbench.tree.indent": 18,
+                // ツリーのインデントガイドを表示する
+                "workbench.tree.renderIndentGuides": "always",
+                // アニメーションを減らす
+                "workbench.reduceMotion": "on",
+                // 新規ファイル作成時、ヒントメッセージを表示する
+                "workbench.editor.untitled.hint": "hidden",
+                // ワークベンチ内での水平スクロールを有効にする
+                "workbench.list.horizontalScrolling": true,
+                // ペースト時、コードを自動的に整形をする
+                "editor.formatOnPaste": true,
+                // 監視ファイルの除外
+                "files.watcherExclude": {
+                    "**/.git/objects/**": true, // Default value
+                    "**/.git/subtree-cache/**": true, // Default value
+                    "**/node_modules/*/**": true, // Default value
+                    "**/.hg/store/**": true, // Default value
+                    "**/.git/**": true,
+                    "**/.venv/**": true
+                }
+            }
+        }
+    }
+}
